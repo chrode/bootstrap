@@ -2734,10 +2734,12 @@ function($parse, $http, $templateCache, $compile) {
       if (!scope.$eval(attrs.tabsetTitles)) {
         elm.remove();
       } else {
+        setTimeout(function() {
         //now that tabs location has been decided, transclude the tab titles in
-        tabsetCtrl.$transcludeFn(tabsetCtrl.$scope.$parent, function(node) {
-          elm.append(node);
-        });
+            tabsetCtrl.$transcludeFn(tabsetCtrl.$scope.$parent, function(node) {
+              elm.append(node);
+            });
+        },1);
       }
     }
   };
